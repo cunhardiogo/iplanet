@@ -45,15 +45,15 @@
   --ip-font-display: "SF Pro Display", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
   --ip-font-text:    "SF Pro Text", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
 
-  --ip-fs-hero:      96px;
-  --ip-fs-h1:        56px;
-  --ip-fs-h2:        40px;
-  --ip-fs-h3:        28px;
-  --ip-fs-h4:        21px;
-  --ip-fs-body-lg:   19px;
-  --ip-fs-body:      17px;
-  --ip-fs-sm:        14px;
-  --ip-fs-xs:        12px;
+  --ip-fs-hero:      104px;
+  --ip-fs-h1:        60px;
+  --ip-fs-h2:        44px;
+  --ip-fs-h3:        30px;
+  --ip-fs-h4:        22px;
+  --ip-fs-body-lg:   21px;
+  --ip-fs-body:      18px;
+  --ip-fs-sm:        15px;
+  --ip-fs-xs:        13px;
 
   --ip-lh-tight:     1.07;
   --ip-lh-snug:      1.2;
@@ -120,7 +120,7 @@ html, body {
 .ip-topnav-brand { display: flex; align-items: center; flex-shrink: 0; }
 .ip-topnav-brand img { height: 28px; width: auto; object-fit: contain; }
 .ip-topnav-link {
-  font-size: 13px; color: var(--ip-fg); text-decoration: none; opacity: 0.85;
+  font-size: 14px; color: var(--ip-fg); text-decoration: none; opacity: 0.85;
   display: inline-flex; align-items: center; white-space: nowrap;
   transition: opacity var(--ip-dur-fast) var(--ip-ease);
 }
@@ -134,11 +134,11 @@ html, body {
 }
 .ip-loja-title {
   font-family: var(--ip-font-display); font-weight: 600;
-  font-size: 86px; line-height: 1.02; letter-spacing: -0.024em;
+  font-size: 92px; line-height: 1.02; letter-spacing: -0.024em;
   color: var(--ip-accent);
 }
 .ip-page-lede {
-  margin-top: 20px; font-size: 19px; color: var(--ip-fg-2);
+  margin-top: 22px; font-size: 21px; color: var(--ip-fg-2);
   line-height: 1.45; max-width: 520px;
 }
 .ip-hero-ctas {
@@ -325,7 +325,7 @@ html, body {
 .ip-section { padding: 40px 0 20px; }
 .ip-section-head { padding: 12px 0 22px; }
 .ip-section-title {
-  font-family: var(--ip-font-display); font-size: 34px; font-weight: 600;
+  font-family: var(--ip-font-display); font-size: 38px; font-weight: 600;
   line-height: 1.2; letter-spacing: -0.015em;
 }
 .ip-section-title em { font-style: normal; color: var(--ip-accent); }
@@ -396,12 +396,12 @@ html, body {
   text-transform: uppercase; color: var(--ip-fg-2);
 }
 .ip-card-title {
-  font-family: var(--ip-font-display); font-size: 18px; font-weight: 600;
+  font-family: var(--ip-font-display); font-size: 20px; font-weight: 600;
   line-height: 1.25; color: var(--ip-fg); letter-spacing: -0.012em; margin-top: 2px;
 }
-.ip-card-desc { font-size: 13px; color: var(--ip-fg-2); line-height: 1.4; }
-.ip-card-price-old { font-size: 12px; color: var(--ip-fg-3); text-decoration: line-through; }
-.ip-card-price { font-size: 14px; color: var(--ip-fg); font-weight: 500; margin-top: 2px; }
+.ip-card-desc { font-size: 14px; color: var(--ip-fg-2); line-height: 1.45; }
+.ip-card-price-old { font-size: 13px; color: var(--ip-fg-3); text-decoration: line-through; }
+.ip-card-price { font-size: 15px; color: var(--ip-fg); font-weight: 500; margin-top: 2px; }
 .ip-card .ip-btn-whats {
   margin-top: 14px; padding: 10px 16px; font-size: 12px;
   justify-content: center; width: 100%;
@@ -435,11 +435,11 @@ html, body {
 .ip-hero-text { position: relative; z-index: 3; max-width: 80%; }
 .ip-hero-title {
   font-family: var(--ip-font-display); font-weight: 600;
-  font-size: 28px; line-height: 1.16; letter-spacing: -0.012em;
+  font-size: 30px; line-height: 1.16; letter-spacing: -0.012em;
   margin-top: 6px; color: inherit;
 }
-.ip-hero-card.is-wide .ip-hero-title { font-size: 36px; }
-.ip-hero-desc { font-size: 14px; line-height: 1.45; color: var(--ip-fg-2); margin-top: 8px; max-width: 360px; }
+.ip-hero-card.is-wide .ip-hero-title { font-size: 40px; }
+.ip-hero-desc { font-size: 15px; line-height: 1.5; color: var(--ip-fg-2); margin-top: 8px; max-width: 360px; }
 .ip-hero-art {
   position: absolute; right: 0; bottom: 0; left: 0; top: 50%;
   display: flex; align-items: flex-end; justify-content: center;
@@ -459,10 +459,10 @@ html, body {
 }
 .ip-troca-title {
   font-family: var(--ip-font-display); font-weight: 600;
-  font-size: 40px; line-height: 1.1; letter-spacing: -0.022em;
+  font-size: 44px; line-height: 1.1; letter-spacing: -0.022em;
   margin: 8px 0 14px;
 }
-.ip-troca-desc { font-size: 17px; line-height: 1.55; color: #a1a1a6; max-width: 520px; }
+.ip-troca-desc { font-size: 18px; line-height: 1.55; color: #a1a1a6; max-width: 520px; }
 .ip-troca-art { display: flex; justify-content: center; align-items: center; }
 .ip-troca-art img { max-width: 100%; height: auto; border-radius: var(--ip-radius-lg); }
 
@@ -483,7 +483,7 @@ html, body {
   border-radius: 12px; display: flex; align-items: center; justify-content: center;
   box-shadow: 0 2px 8px rgba(245,99,0,0.18);
 }
-.ip-feature-title { font-size: 16px; font-weight: 600; line-height: 1.4; color: var(--ip-fg); letter-spacing: -0.01em; }
+.ip-feature-title { font-size: 17px; font-weight: 600; line-height: 1.4; color: var(--ip-fg); letter-spacing: -0.01em; }
 .ip-feature-title em { font-style: normal; color: var(--ip-accent); }
 
 /* ── Store cards ── */
@@ -497,15 +497,15 @@ html, body {
 .ip-store-card:hover { box-shadow: var(--ip-shadow-card-hover); transform: translateY(-3px); }
 .ip-store-map { height: 200px; background: #e8eef4; flex-shrink: 0; }
 .ip-store-body { padding: 26px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
-.ip-store-name { font-family: var(--ip-font-display); font-size: 26px; font-weight: 600; letter-spacing: -0.012em; }
-.ip-store-addr { font-size: 14px; color: var(--ip-fg-2); }
-.ip-store-hours { font-size: 13px; color: var(--ip-fg-3); margin-top: 4px; flex: 1; }
+.ip-store-name { font-family: var(--ip-font-display); font-size: 28px; font-weight: 600; letter-spacing: -0.012em; }
+.ip-store-addr { font-size: 15px; color: var(--ip-fg-2); }
+.ip-store-hours { font-size: 14px; color: var(--ip-fg-3); margin-top: 4px; flex: 1; }
 .ip-store-hours-row { display: flex; justify-content: space-between; padding: 2px 0; }
 .ip-store-ctas { display: flex; gap: 8px; margin-top: 14px; }
 
 /* ── Quick links ── */
 .ip-quick { padding: 28px 0 10px; }
-.ip-quick-title { font-family: var(--ip-font-display); font-size: 19px; font-weight: 600; margin-bottom: 14px; letter-spacing: -0.012em; }
+.ip-quick-title { font-family: var(--ip-font-display); font-size: 21px; font-weight: 600; margin-bottom: 14px; letter-spacing: -0.012em; }
 .ip-quick-row { display: flex; gap: 8px; flex-wrap: wrap; }
 .ip-quick-pill {
   display: inline-flex; padding: 9px 18px;
@@ -556,25 +556,29 @@ html, body {
 /* ── Responsive ── */
 @media (max-width: 960px) {
   .ip-hero-row { grid-template-columns: 1fr; }
-  .ip-loja-title { font-size: 60px; }
+  .ip-loja-title { font-size: 64px; }
+  .ip-page-lede { font-size: 18px; }
   .ip-rail { grid-template-columns: 1fr 1fr 1fr; }
   .ip-rail .ip-rail-item:nth-child(n+4) { display: none; }
   .ip-rail-3up { grid-template-columns: 1fr 1fr; }
   .ip-feature-row { grid-template-columns: 1fr 1fr; }
   .ip-troca { grid-template-columns: 1fr; padding: 32px; }
-  .ip-troca-title { font-size: 30px; }
+  .ip-troca-title { font-size: 34px; }
   .ip-rail-2up { grid-template-columns: 1fr; }
   .ip-footer-grid { grid-template-columns: 1fr 1fr; }
   .ip-topnav-inner { gap: 16px; overflow-x: auto; justify-content: flex-start; padding: 0 16px; }
+  .ip-section-title { font-size: 32px; }
 }
 @media (max-width: 600px) {
-  .ip-loja-title { font-size: 44px; }
+  .ip-loja-title { font-size: 46px; }
+  .ip-page-lede { font-size: 17px; }
+  .ip-section-title { font-size: 28px; }
   .ip-rail { grid-template-columns: 1fr 1fr; }
   .ip-rail .ip-rail-item:nth-child(n+3) { display: none; }
   .ip-rail-3up { grid-template-columns: 1fr 1fr; }
   .ip-footer-grid { grid-template-columns: 1fr 1fr; }
   .ip-troca { padding: 24px; }
-  .ip-troca-title { font-size: 26px; }
+  .ip-troca-title { font-size: 28px; }
   .ip-page-hero { padding: 36px 0 24px; }
   .ip-hero-ctas { flex-direction: column; align-items: flex-start; }
 }
