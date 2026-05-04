@@ -38,9 +38,6 @@ export default function HomePage() {
 
             {/* Texto */}
             <div>
-              <div className="ip-eyebrow" style={{ color: '#86868b', marginBottom: 14 }}>
-                iPLANET · ITAIM BIBI &amp; SÃO CAETANO
-              </div>
               <h1 className="ip-loja-title">
                 <span className="hero-line">Compre Apple</span>
                 <br />
