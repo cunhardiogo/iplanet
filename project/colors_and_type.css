@@ -1,0 +1,222 @@
+/* iPlanet Design System — Colors & Type
+ * Reseller of Apple products in Brazil.
+ * Visual language: Apple BR Store (apple.com/br/store) + iPlanet's
+ * monochrome wordmark. Clean, product-forward, generous whitespace,
+ * with a coral/orange accent for promotional moments.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* ─────────────────────────  COLOR  ───────────────────────── */
+
+  /* Neutrals — the workhorse of every Apple-style page */
+  --ip-white:        #ffffff;   /* pure white — product backgrounds */
+  --ip-bg:           #f5f5f7;   /* page bg — Apple's signature off-white */
+  --ip-bg-2:         #fbfbfd;   /* card bg, slightly warmer than --ip-bg */
+  --ip-line:         #d2d2d7;   /* hairline borders */
+  --ip-line-soft:    #e8e8ed;   /* softer dividers */
+
+  /* Foreground (text) */
+  --ip-fg:           #1d1d1f;   /* primary ink — Apple's near-black */
+  --ip-fg-2:         #6e6e73;   /* secondary text, captions */
+  --ip-fg-3:         #86868b;   /* tertiary, helper text */
+  --ip-fg-inverse:   #f5f5f7;   /* on dark surfaces */
+
+  /* Brand accent — coral/orange used for section eyebrows and emphasis,
+     mirroring "Loja", "As novidades", "Para todo mundo ouvir" headers */
+  --ip-accent:        #f56300;  /* primary coral-orange */
+  --ip-accent-soft:   #ff8a3d;  /* hover/lighter */
+  --ip-accent-deep:   #d24e00;  /* press/darker */
+  --ip-accent-tint:   #fff1e6;  /* tinted bg pill */
+
+  /* CTA blue — Apple's "Saiba mais" / "Comprar" pill blue */
+  --ip-blue:          #0071e3;
+  --ip-blue-hover:    #0077ed;
+  --ip-blue-press:    #006edb;
+  --ip-blue-tint:     #e6f0fa;
+
+  /* Dark surfaces (for hero cards à la "iPhone 17 Pro") */
+  --ip-ink:           #000000;
+  --ip-ink-2:         #1d1d1f;
+
+  /* Section pastel washes — directly seen on the Apple BR home */
+  --ip-wash-sky:      #d9eef9;  /* iPad air section */
+  --ip-wash-mint:     #e3f1e8;
+  --ip-wash-blush:    #fde7e3;
+  --ip-wash-cream:    #faf3e7;
+
+  /* Semantic */
+  --ip-success:       #2e7d32;
+  --ip-warning:       #b25c00;
+  --ip-error:         #c4262e;
+  --ip-info:          var(--ip-blue);
+
+  /* "NOVO" badge color (seen above product card titles) */
+  --ip-novo:          var(--ip-accent);
+
+  /* Seminovo flag — deep teal, distinct from coral NOVO */
+  --ip-seminovo:      #1f6f6a;
+  --ip-seminovo-tint: #e3f0ee;
+
+  /* WhatsApp green — primary CTA on iPlanet (per business goals) */
+  --ip-whatsapp:      #25d366;
+  --ip-whatsapp-deep: #1aa852;
+
+  /* ─────────────────────────  TYPE  ───────────────────────── */
+
+  /* Apple uses SF Pro. We substitute Inter via Google Fonts —
+     SF Pro is not freely redistributable.
+     ⚠️ FONT SUBSTITUTION: replace with SF Pro / SF Pro Display
+     when you have licensed copies. */
+  --ip-font-display: "SF Pro Display", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --ip-font-text:    "SF Pro Text", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --ip-font-mono:    ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
+
+  /* Type scale — mirrors apple.com BR (tight tracking, generous sizes) */
+  --ip-fs-hero:      96px;   /* "iPhone" giant headline */
+  --ip-fs-h1:        56px;   /* section headlines */
+  --ip-fs-h2:        40px;   /* "Loja", "iPad air" */
+  --ip-fs-h3:        28px;   /* card title — "iPhone 17 Pro" */
+  --ip-fs-h4:        21px;   /* eyebrow large */
+  --ip-fs-body-lg:   19px;   /* lead body */
+  --ip-fs-body:      17px;   /* default body */
+  --ip-fs-sm:        14px;   /* captions */
+  --ip-fs-xs:        12px;   /* eyebrow / NOVO label */
+
+  --ip-lh-tight:     1.07;
+  --ip-lh-snug:      1.2;
+  --ip-lh-normal:    1.4;
+  --ip-lh-loose:     1.6;
+
+  --ip-tracking-tight: -0.022em;   /* display tightening */
+  --ip-tracking-eyebrow: 0.06em;   /* uppercase eyebrows */
+
+  /* ─────────────────────────  SHAPE & SPACE  ───────────────────────── */
+  --ip-radius-sm:   8px;
+  --ip-radius:      14px;
+  --ip-radius-lg:   18px;
+  --ip-radius-xl:   28px;   /* large product cards */
+  --ip-radius-pill: 980px;  /* CTA pills */
+
+  --ip-shadow-card: 0 1px 2px rgba(0,0,0,0.04), 0 4px 14px rgba(0,0,0,0.06);
+  --ip-shadow-card-hover: 0 2px 6px rgba(0,0,0,0.06), 0 14px 32px rgba(0,0,0,0.10);
+  --ip-shadow-nav:  0 1px 0 rgba(0,0,0,0.06);
+
+  --ip-space-1: 4px;
+  --ip-space-2: 8px;
+  --ip-space-3: 12px;
+  --ip-space-4: 16px;
+  --ip-space-5: 24px;
+  --ip-space-6: 32px;
+  --ip-space-8: 48px;
+  --ip-space-10: 64px;
+  --ip-space-12: 88px;
+  --ip-space-16: 128px;
+
+  /* Container width — Apple's ~980px content max for store rails,
+     1440 for hero rows */
+  --ip-container:  980px;
+  --ip-container-wide: 1440px;
+
+  /* Motion */
+  --ip-ease:        cubic-bezier(0.4, 0, 0.2, 1);
+  --ip-ease-out:    cubic-bezier(0, 0, 0.2, 1);
+  --ip-dur-fast:    150ms;
+  --ip-dur-base:    220ms;
+  --ip-dur-slow:    420ms;
+}
+
+/* ─────────────────────────  SEMANTIC TYPOGRAPHY  ───────────────────────── */
+
+html, body {
+  font-family: var(--ip-font-text);
+  font-size: var(--ip-fs-body);
+  line-height: var(--ip-lh-normal);
+  color: var(--ip-fg);
+  background: var(--ip-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.ip-hero {
+  font-family: var(--ip-font-display);
+  font-size: var(--ip-fs-hero);
+  font-weight: 600;
+  line-height: var(--ip-lh-tight);
+  letter-spacing: var(--ip-tracking-tight);
+}
+.ip-h1 {
+  font-family: var(--ip-font-display);
+  font-size: var(--ip-fs-h1);
+  font-weight: 600;
+  line-height: var(--ip-lh-tight);
+  letter-spacing: var(--ip-tracking-tight);
+}
+.ip-h2 {
+  font-family: var(--ip-font-display);
+  font-size: var(--ip-fs-h2);
+  font-weight: 600;
+  line-height: var(--ip-lh-snug);
+  letter-spacing: var(--ip-tracking-tight);
+}
+.ip-h3 {
+  font-family: var(--ip-font-display);
+  font-size: var(--ip-fs-h3);
+  font-weight: 600;
+  line-height: var(--ip-lh-snug);
+  letter-spacing: -0.012em;
+}
+.ip-h4 {
+  font-family: var(--ip-font-display);
+  font-size: var(--ip-fs-h4);
+  font-weight: 600;
+  line-height: var(--ip-lh-snug);
+}
+.ip-body-lg {
+  font-size: var(--ip-fs-body-lg);
+  line-height: var(--ip-lh-normal);
+  font-weight: 400;
+}
+.ip-body {
+  font-size: var(--ip-fs-body);
+  line-height: var(--ip-lh-normal);
+  font-weight: 400;
+}
+.ip-sm {
+  font-size: var(--ip-fs-sm);
+  line-height: var(--ip-lh-normal);
+  color: var(--ip-fg-2);
+}
+.ip-eyebrow {
+  font-size: var(--ip-fs-xs);
+  font-weight: 600;
+  letter-spacing: var(--ip-tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--ip-fg-2);
+}
+.ip-novo {
+  font-size: var(--ip-fs-xs);
+  font-weight: 600;
+  letter-spacing: var(--ip-tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--ip-novo);
+}
+
+/* "Section eyebrow" pattern — orange title + grey description on one line.
+   Matches Apple BR: "Loja. Presentes para sua mãe..." */
+.ip-section-title {
+  font-family: var(--ip-font-display);
+  font-size: var(--ip-fs-h2);
+  font-weight: 600;
+  letter-spacing: var(--ip-tracking-tight);
+  line-height: var(--ip-lh-snug);
+}
+.ip-section-title em {
+  font-style: normal;
+  color: var(--ip-accent);
+}
+.ip-section-title span {
+  color: var(--ip-fg-2);
+}
