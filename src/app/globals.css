@@ -97,6 +97,9 @@
 /* ── Reset ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* Scroll suave para links âncora */
+html { scroll-behavior: smooth; }
+
 html, body {
   font-family: var(--ip-font-text);
   font-size: var(--ip-fs-body);
@@ -381,6 +384,15 @@ html, body {
 .ip-footer-bar-links { display: flex; gap: 18px; }
 .ip-footer-bar a { color: var(--ip-fg-2); text-decoration: none; }
 .ip-footer-bar a:hover { text-decoration: underline; }
+
+/* ── Performance hints para animações GSAP ── */
+.ip-hero-art,
+.ip-hero-aside,
+.ip-loja-title,
+.ip-hero-card {
+  will-change: transform;
+}
+.ip-fab-whats { will-change: transform, opacity; }
 
 /* ── FAB ── */
 .ip-fab-whats {

@@ -1,3 +1,4 @@
+import Animations from '@/components/Animations'
 import TopNav from '@/components/TopNav'
 import CategoryRail from '@/components/CategoryRail'
 import SectionTitle from '@/components/SectionTitle'
@@ -19,6 +20,7 @@ const MAIN_WHATS = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('
 export default function HomePage() {
   return (
     <>
+      <Animations />
       <TopNav />
 
       {/* HERO */}
@@ -27,7 +29,11 @@ export default function HomePage() {
           <div className="ip-hero-row">
             <div>
               <div className="ip-eyebrow" style={{ color: '#6e6e73', marginBottom: 12 }}>iPLANET · SÃO PAULO &amp; ABC</div>
-              <h1 className="ip-loja-title">Tudo Apple.<br /><span style={{ color: '#1d1d1f' }}>Mais perto.</span></h1>
+              <h1 className="ip-loja-title">
+                <span className="hero-line">Tudo Apple.</span>
+                <br />
+                <span className="hero-line" style={{ color: '#1d1d1f' }}>Mais perto.</span>
+              </h1>
               <p className="ip-page-lede">Zero na caixa ou seminovo revisado. Você escolhe — e a gente entrega, parcela e atende no WhatsApp.</p>
               <div className="ip-hero-ctas">
                 <a className="ip-btn-whats" href={MAIN_WHATS} target="_blank" rel="noopener noreferrer">
