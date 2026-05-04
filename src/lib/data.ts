@@ -9,7 +9,10 @@ export type StoreHour = { d: string; h: string }
 
 export type Store = {
   name: string
+  shortName: string
   addr: string
+  shortAddr: string
+  neighborhood: string
   mapsUrl: string
   hours: StoreHour[]
 }
@@ -17,7 +20,10 @@ export type Store = {
 export const stores: Store[] = [
   {
     name: 'iPlanet Itaim Bibi',
+    shortName: 'Itaim Bibi',
     addr: 'R. Clodomiro Amazonas, 1158 — Itaim Bibi, São Paulo — SP',
+    shortAddr: 'R. Clodomiro Amazonas, 1158',
+    neighborhood: 'Itaim Bibi · São Paulo',
     mapsUrl: 'https://maps.google.com/?q=R.+Clodomiro+Amazonas,+1158,+Itaim+Bibi,+São+Paulo',
     hours: [
       { d: 'Seg–Sex', h: '10h–18h30' },
@@ -26,7 +32,10 @@ export const stores: Store[] = [
   },
   {
     name: 'iPlanet São Caetano',
+    shortName: 'São Caetano',
     addr: 'R. Santa Catarina, 40 — Quiosque 1, Centro, São Caetano do Sul — SP, 09510-120',
+    shortAddr: 'R. Santa Catarina, 40 — Quiosque 1',
+    neighborhood: 'Centro · São Caetano do Sul',
     mapsUrl: 'https://maps.google.com/?q=R.+Santa+Catarina,+40,+Centro,+São+Caetano+do+Sul',
     hours: [
       { d: 'Seg–Sex', h: '10h–18h' },

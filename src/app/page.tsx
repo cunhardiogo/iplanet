@@ -14,8 +14,16 @@ import {
   WHATSAPP_NUMBER, WHATSAPP_DISPLAY,
 } from '@/lib/data'
 
-const TROCA_WHATS = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Olá! Quero avaliar meu aparelho no trade-in.')}`
 const MAIN_WHATS = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Olá! Quero falar com a iPlanet.')}`
+const TROCA_WHATS = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Olá! Quero avaliar meu aparelho no trade-in.')}`
+
+function MapPinIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="#fff" aria-hidden="true">
+      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+    </svg>
+  )
+}
 
 export default function HomePage() {
   return (
@@ -23,18 +31,25 @@ export default function HomePage() {
       <Animations />
       <TopNav />
 
-      {/* HERO */}
+      {/* ── HERO ── */}
       <header className="ip-page-hero">
         <div className="ip-container">
           <div className="ip-hero-row">
+
+            {/* Texto */}
             <div>
-              <div className="ip-eyebrow" style={{ color: '#6e6e73', marginBottom: 12 }}>iPLANET · SÃO PAULO &amp; ABC</div>
+              <div className="ip-eyebrow" style={{ color: '#86868b', marginBottom: 14 }}>
+                iPLANET · ITAIM BIBI &amp; SÃO CAETANO
+              </div>
               <h1 className="ip-loja-title">
-                <span className="hero-line">Tudo Apple.</span>
+                <span className="hero-line">Compre Apple</span>
                 <br />
-                <span className="hero-line" style={{ color: '#1d1d1f' }}>Mais perto.</span>
+                <span className="hero-line" style={{ color: '#1d1d1f' }}>com quem entende.</span>
               </h1>
-              <p className="ip-page-lede">Zero na caixa ou seminovo revisado. Você escolhe — e a gente entrega, parcela e atende no WhatsApp.</p>
+              <p className="ip-page-lede">
+                Zero na caixa ou seminovo revisado com 1 ano de garantia.
+                Parcele em até 12x, retire na loja ou receba em casa.
+              </p>
               <div className="ip-hero-ctas">
                 <a className="ip-btn-whats" href={MAIN_WHATS} target="_blank" rel="noopener noreferrer">
                   <WhatsGlyph size={16} /> Chamar no WhatsApp
@@ -43,24 +58,39 @@ export default function HomePage() {
                 <a className="ip-link" href="#visite">Visitar a loja ↗</a>
               </div>
             </div>
+
+            {/* Store finder card 3D */}
             <div className="ip-hero-aside">
-              <div className="ip-hero-aside-h">Atendimento humano,<br />direto com a gente.</div>
-              {stores.map(s => (
-                <div key={s.name} className="ip-store-mini">
-                  <div className="ip-store-mini-name">{s.name}</div>
-                  <div className="ip-store-mini-addr">{s.addr}</div>
-                </div>
-              ))}
-              <div className="ip-store-mini-whats">
-                <WhatsGlyph size={12} /> {WHATSAPP_DISPLAY}
+              <p className="ip-aside-eyebrow">ONDE ESTAMOS</p>
+
+              <div className="ip-store-pins">
+                {stores.map(s => (
+                  <a key={s.name} className="ip-store-pin" href={s.mapsUrl} target="_blank" rel="noopener noreferrer">
+                    <div className="ip-pin-dot-wrap">
+                      <MapPinIcon />
+                    </div>
+                    <div className="ip-pin-info">
+                      <div className="ip-pin-name">{s.shortName}</div>
+                      <div className="ip-pin-addr">{s.shortAddr}</div>
+                      <div className="ip-pin-hours">
+                        {s.hours[0].d} {s.hours[0].h} &nbsp;·&nbsp; Sáb {s.hours[1].h}
+                      </div>
+                    </div>
+                  </a>
+                ))}
               </div>
+
+              <a className="ip-aside-whats" href={MAIN_WHATS} target="_blank" rel="noopener noreferrer">
+                <WhatsGlyph size={16} /> {WHATSAPP_DISPLAY}
+              </a>
             </div>
+
           </div>
           <CategoryRail categories={categories} />
         </div>
       </header>
 
-      {/* ZERO NA CAIXA */}
+      {/* ── ZERO NA CAIXA ── */}
       <section id="novidades" className="ip-section">
         <div className="ip-container">
           <SectionTitle headline="Zero na caixa" subhead="Lacrados, com nota fiscal e garantia Apple." />
@@ -74,7 +104,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SEMINOVOS */}
+      {/* ── SEMINOVOS ── */}
       <section className="ip-section ip-section-seminovo">
         <div className="ip-container">
           <SectionTitle headline="Seminovos iPlanet" subhead="Revisados, com 1 ano de garantia. Por menos." />
@@ -88,19 +118,22 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* TRADE-IN */}
+      {/* ── TRADE-IN ── */}
       <section className="ip-section">
         <div className="ip-container">
           <div className="ip-troca">
             <div>
-              <div className="ip-eyebrow" style={{ color: '#fff', opacity: 0.7 }}>TROCA COM UPGRADE</div>
-              <div className="ip-troca-title">Tem um Apple antigo? Vira desconto.</div>
-              <p className="ip-troca-desc">Manda foto pelo WhatsApp e a gente te dá uma proposta na hora. Seu iPhone, iPad ou Mac usado vira parte do pagamento do novo.</p>
+              <div className="ip-eyebrow" style={{ color: '#fff', opacity: 0.6 }}>TROCA COM UPGRADE</div>
+              <div className="ip-troca-title">Tem um Apple antigo?<br />Vira desconto.</div>
+              <p className="ip-troca-desc">
+                Manda foto pelo WhatsApp e a gente te dá uma proposta na hora.
+                Seu iPhone, iPad ou Mac usado vira parte do pagamento do novo.
+              </p>
               <div className="ip-hero-ctas">
                 <a className="ip-btn-whats" href={TROCA_WHATS} target="_blank" rel="noopener noreferrer">
                   <WhatsGlyph size={16} /> Avaliar pelo WhatsApp
                 </a>
-                <a className="ip-link" href="#" style={{ color: '#fff' }}>Como funciona ↗</a>
+                <a className="ip-link" href="#" style={{ color: '#a1a1a6' }}>Como funciona ↗</a>
               </div>
             </div>
             <div className="ip-troca-art">
@@ -111,7 +144,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ACESSÓRIOS */}
+      {/* ── ACESSÓRIOS ── */}
       <section className="ip-section">
         <div className="ip-container">
           <SectionTitle headline="Acessórios" subhead="Pra completar seu setup." />
@@ -125,7 +158,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* POR QUE iPLANET */}
+      {/* ── POR QUE iPLANET ── */}
       <section className="ip-section">
         <div className="ip-container">
           <SectionTitle headline="Por que a iPlanet" subhead="Ainda mais motivos pra comprar com a gente." />
@@ -133,7 +166,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* VISITE */}
+      {/* ── VISITE ── */}
       <section id="visite" className="ip-section">
         <div className="ip-container">
           <SectionTitle headline="Visite a loja" subhead="A gente te espera. Pode passar pra ver de perto." />
@@ -147,7 +180,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* QUICK LINKS */}
+      {/* ── QUICK LINKS ── */}
       <section className="ip-section">
         <div className="ip-container">
           <QuickLinks items={quickLinks} />

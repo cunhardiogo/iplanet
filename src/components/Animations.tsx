@@ -5,59 +5,81 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
+/* Applies mouse-tracking 3D tilt + shine to a card element */
+function addCardTilt(el: HTMLElement, intensity = 10) {
+  const onMove = (e: MouseEvent) => {
+    const rect = el.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+    const cx = rect.width / 2
+    const cy = rect.height / 2
+    const rotX = ((y - cy) / cy) * -intensity
+    const rotY = ((x - cx) / cx) * intensity
+    const xPct = (x / rect.width) * 100
+    const yPct = (y / rect.height) * 100
+
+    gsap.to(el, {
+      rotateX: rotX, rotateY: rotY,
+      transformPerspective: 900,
+      duration: 0.45, ease: 'power2.out',
+    })
+    el.style.setProperty('--shine-x', `${xPct}%`)
+    el.style.setProperty('--shine-y', `${yPct}%`)
+  }
+
+  const onLeave = () => {
+    gsap.to(el, {
+      rotateX: 0, rotateY: 0,
+      duration: 0.75, ease: 'elastic.out(1, 0.4)',
+    })
+  }
+
+  el.addEventListener('mousemove', onMove)
+  el.addEventListener('mouseleave', onLeave)
+
+  return () => {
+    el.removeEventListener('mousemove', onMove)
+    el.removeEventListener('mouseleave', onLeave)
+  }
+}
+
 export default function Animations() {
   useEffect(() => {
+    const cleanups: (() => void)[] = []
+
     const ctx = gsap.context(() => {
 
       // ── PAGE LOAD TIMELINE ────────────────────────────────────────────
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
 
-      // Nav desce suavemente
-      tl.from('.ip-topnav', {
-        y: -56, autoAlpha: 0, duration: 0.6,
-      })
-      // Eyebrow sobe
-      .from('.ip-page-hero .ip-eyebrow', {
-        y: 18, autoAlpha: 0, duration: 0.55,
-      }, '-=0.3')
-      // Título linha por linha com stagger — efeito muito elegante
-      .from('.hero-line', {
-        y: 56, autoAlpha: 0, duration: 0.9,
-        stagger: 0.14,
-        ease: 'power4.out',
-      }, '-=0.4')
-      // Lede / subtítulo
-      .from('.ip-page-lede', {
-        y: 22, autoAlpha: 0, duration: 0.65,
-      }, '-=0.55')
-      // CTAs em stagger
-      .from('.ip-hero-ctas > *', {
-        y: 18, autoAlpha: 0, duration: 0.5,
-        stagger: 0.1,
-      }, '-=0.45')
-      // Card lateral desliza da direita
-      .from('.ip-hero-aside', {
-        x: 40, autoAlpha: 0, duration: 0.8,
-        ease: 'power3.out',
-      }, '-=0.85')
-      // Ícones de categoria sobem em cascata
-      .from('.ip-cat-item', {
-        y: 22, autoAlpha: 0, duration: 0.55,
-        stagger: 0.045,
-      }, '-=0.4')
+      tl.from('.ip-topnav', { y: -56, autoAlpha: 0, duration: 0.6 })
+        .from('.ip-page-hero .ip-eyebrow', { y: 18, autoAlpha: 0, duration: 0.55 }, '-=0.3')
+        .from('.hero-line', { y: 56, autoAlpha: 0, duration: 0.9, stagger: 0.14, ease: 'power4.out' }, '-=0.4')
+        .from('.ip-page-lede', { y: 22, autoAlpha: 0, duration: 0.65 }, '-=0.55')
+        .from('.ip-hero-ctas > *', { y: 18, autoAlpha: 0, duration: 0.5, stagger: 0.1 }, '-=0.45')
+        .from('.ip-hero-aside', { x: 40, autoAlpha: 0, duration: 0.8 }, '-=0.85')
+        .from('.ip-cat-item', { y: 22, autoAlpha: 0, duration: 0.55, stagger: 0.045 }, '-=0.4')
 
-      // ── FAB — aparece com "pulo" depois da página carregar ─────────────
-      gsap.from('.ip-fab-whats', {
-        scale: 0, autoAlpha: 0, duration: 0.65, delay: 1.6,
-        ease: 'back.out(2.2)',
+      // ── 3D TILT: hero aside card ───────────────────────────────────────
+      const aside = document.querySelector<HTMLElement>('.ip-hero-aside')
+      if (aside) cleanups.push(addCardTilt(aside, 7))
+
+      // ── 3D TILT + SHINE: product & hero cards ─────────────────────────
+      document.querySelectorAll<HTMLElement>('.ip-card').forEach(card => {
+        cleanups.push(addCardTilt(card, 12))
       })
-      // Pulsação contínua sutil
+      document.querySelectorAll<HTMLElement>('.ip-hero-card').forEach(card => {
+        cleanups.push(addCardTilt(card, 7))
+      })
+
+      // ── FAB ───────────────────────────────────────────────────────────
+      gsap.from('.ip-fab-whats', { scale: 0, autoAlpha: 0, duration: 0.65, delay: 1.6, ease: 'back.out(2.2)' })
       gsap.to('.ip-fab-whats', {
         scale: 1.1, duration: 0.5, delay: 2.8,
         ease: 'power1.inOut', yoyo: true, repeat: -1, repeatDelay: 4,
       })
 
-      // ── SECTION TITLES — fade + slide por scroll ──────────────────────
+      // ── SECTION TITLES ────────────────────────────────────────────────
       gsap.utils.toArray<Element>('.ip-section-head').forEach(el => {
         gsap.from(el, {
           scrollTrigger: { trigger: el, start: 'top 88%', once: true },
@@ -65,7 +87,7 @@ export default function Animations() {
         })
       })
 
-      // ── RAILS — cards sobem em stagger (cada rail independente) ───────
+      // ── RAILS (per rail, independent stagger) ─────────────────────────
       gsap.utils.toArray<Element>('.ip-rail, .ip-rail-3up').forEach(rail => {
         const items = (rail as HTMLElement).querySelectorAll(':scope > .ip-rail-item')
         if (!items.length) return
@@ -75,30 +97,19 @@ export default function Animations() {
         })
       })
 
-      // ── TROCA — escala + split esquerda/direita ───────────────────────
+      // ── TROCA — scale + split ─────────────────────────────────────────
       const trocaEl = document.querySelector<HTMLElement>('.ip-troca')
       if (trocaEl) {
-        // O bloco inteiro escala levemente ao entrar
         gsap.from(trocaEl, {
           scrollTrigger: { trigger: trocaEl, start: 'top 80%', once: true },
           scale: 0.95, autoAlpha: 0, duration: 0.75, ease: 'power3.out',
         })
-        const children = Array.from(trocaEl.children)
-        // Texto vem da esquerda
-        gsap.from(children[0], {
-          scrollTrigger: { trigger: trocaEl, start: 'top 78%', once: true },
-          x: -52, autoAlpha: 0, duration: 0.9, ease: 'power3.out',
-        })
-        // Imagem vem da direita
-        if (children[1]) {
-          gsap.from(children[1], {
-            scrollTrigger: { trigger: trocaEl, start: 'top 78%', once: true },
-            x: 52, autoAlpha: 0, duration: 0.9, ease: 'power3.out',
-          })
-        }
+        const [left, right] = Array.from(trocaEl.children) as HTMLElement[]
+        gsap.from(left, { scrollTrigger: { trigger: trocaEl, start: 'top 78%', once: true }, x: -52, autoAlpha: 0, duration: 0.9, ease: 'power3.out' })
+        if (right) gsap.from(right, { scrollTrigger: { trigger: trocaEl, start: 'top 78%', once: true }, x: 52, autoAlpha: 0, duration: 0.9, ease: 'power3.out' })
       }
 
-      // ── FEATURE TILES — stagger diagonal ─────────────────────────────
+      // ── FEATURE TILES ─────────────────────────────────────────────────
       gsap.from('.ip-feature-tile', {
         scrollTrigger: { trigger: '.ip-feature-row', start: 'top 85%', once: true },
         y: 36, autoAlpha: 0, duration: 0.65, ease: 'power2.out', stagger: 0.11,
@@ -110,7 +121,7 @@ export default function Animations() {
         y: 36, autoAlpha: 0, duration: 0.75, ease: 'power2.out', stagger: 0.18,
       })
 
-      // ── QUICK LINKS — aparecem em onda ───────────────────────────────
+      // ── QUICK LINKS ───────────────────────────────────────────────────
       gsap.from('.ip-quick-pill', {
         scrollTrigger: { trigger: '.ip-quick', start: 'top 92%', once: true },
         y: 16, autoAlpha: 0, duration: 0.4, ease: 'power2.out', stagger: 0.045,
@@ -122,39 +133,42 @@ export default function Animations() {
         y: 20, autoAlpha: 0, duration: 0.6, ease: 'power2.out',
       })
 
-      // ── PARALLAX nas imagens dos hero cards ───────────────────────────
-      // Só desktop: imagens se movem mais devagar que o scroll — cria profundidade
+      // ── PARALLAX hero card images (desktop only) ──────────────────────
       const mm = gsap.matchMedia()
       mm.add('(min-width: 768px)', () => {
         gsap.utils.toArray<Element>('.ip-hero-art').forEach(art => {
           gsap.to(art, {
-            y: -44,
-            ease: 'none',
+            y: -44, ease: 'none',
             scrollTrigger: {
               trigger: (art as HTMLElement).closest('.ip-hero-card'),
-              start: 'top bottom',
-              end: 'bottom top',
-              scrub: 1.2,
+              start: 'top bottom', end: 'bottom top', scrub: 1.2,
             },
           })
         })
-
-        // Hero aside: leve parallax vertical no scroll
+        // Hero aside parallax
         gsap.to('.ip-hero-aside', {
-          y: -24,
-          ease: 'none',
+          y: -24, ease: 'none',
           scrollTrigger: {
             trigger: '.ip-page-hero',
-            start: 'top top',
-            end: 'bottom top',
-            scrub: 1.5,
+            start: 'top top', end: 'bottom top', scrub: 1.5,
+          },
+        })
+        // Category icons floating effect
+        gsap.to('.ip-cat-rail', {
+          y: -12, ease: 'none',
+          scrollTrigger: {
+            trigger: '.ip-page-hero',
+            start: 'top top', end: 'bottom top', scrub: 1,
           },
         })
       })
 
     })
 
-    return () => ctx.revert()
+    return () => {
+      cleanups.forEach(fn => fn())
+      ctx.revert()
+    }
   }, [])
 
   return null
