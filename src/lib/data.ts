@@ -44,17 +44,17 @@ export const stores: Store[] = [
   },
 ]
 
-export type Category = { id: string; label: string; shape: string }
+export type Category = { id: string; label: string; shape: string; href: string }
 
 export const categories: Category[] = [
-  { id: 'iphone', label: 'iPhone', shape: 'iphone' },
-  { id: 'mac', label: 'Mac', shape: 'mac' },
-  { id: 'ipad', label: 'iPad', shape: 'ipad' },
-  { id: 'watch', label: 'Apple Watch', shape: 'watch' },
-  { id: 'airpods', label: 'AirPods', shape: 'airpods' },
-  { id: 'acc', label: 'Acessórios', shape: 'acc' },
-  { id: 'seminovos', label: 'Seminovos', shape: 'iphone' },
-  { id: 'troca', label: 'Trade-in', shape: 'airtag' },
+  { id: 'iphone',    label: 'iPhone',      shape: 'iphone',  href: '#novidades' },
+  { id: 'mac',       label: 'Mac',         shape: 'mac',     href: '#novidades' },
+  { id: 'ipad',      label: 'iPad',        shape: 'ipad',    href: '#novidades' },
+  { id: 'watch',     label: 'Apple Watch', shape: 'watch',   href: '#novidades' },
+  { id: 'airpods',   label: 'AirPods',     shape: 'airpods', href: '#acessorios' },
+  { id: 'acc',       label: 'Acessórios',  shape: 'acc',     href: '#acessorios' },
+  { id: 'seminovos', label: 'Seminovos',   shape: 'iphone',  href: '#seminovos' },
+  { id: 'troca',     label: 'Trade-in',    shape: 'airtag',  href: '#troca' },
 ]
 
 export type Product = {
@@ -79,7 +79,7 @@ export const novidades: Product[] = [
   {
     id: 'iphone17pro', novo: true, hero: true, dark: true,
     title: 'iPhone 17 Pro',
-    desc: 'Pro em tudo. Lacrado, com nota fiscal. <strong>12x de R$ 833</strong> sem juros.',
+    desc: 'Pro em tudo. Lacrado, com nota fiscal. <strong>18x de R$ 555</strong> sem juros.',
     tint: ['#1a1a2e', '#0f0f1a'],
     img: '/assets/products/iphone-17-pro-natural.jpg',
     imgFit: 'contain',
@@ -88,14 +88,14 @@ export const novidades: Product[] = [
     id: 'iphoneair', novo: true, eyebrow: 'ZERO NA CAIXA',
     title: 'iPhone Air',
     desc: 'Azul · 256GB · A19.',
-    price: 'R$ 8.499 · 12x R$ 708',
+    price: 'R$ 8.499 · 18x R$ 472',
     img: '/assets/products/iphone-air-blue.jpg',
   },
   {
     id: 'iphone16', novo: true, eyebrow: 'ZERO NA CAIXA',
     title: 'iPhone 16',
     desc: 'Lavanda · 128GB · A18.',
-    price: 'R$ 7.499 · 12x R$ 624',
+    price: 'R$ 7.499 · 18x R$ 417',
     img: '/assets/products/iphone-16-purple.jpg',
   },
   {
@@ -184,10 +184,39 @@ export type Feature = { id: string; icon: string; title: string }
 
 export const features: Feature[] = [
   { id: 'garantia', icon: 'shield', title: '<em>1 ano de garantia</em> iPlanet em todo seminovo.' },
-  { id: 'whatsapp', icon: 'whats', title: 'Atendimento humano, direto no <em>WhatsApp</em>.' },
-  { id: 'parcel', icon: 'card', title: 'Em até <em>12x sem juros</em>. PIX com 5% off.' },
-  { id: 'frete', icon: 'box', title: '<em>Frete grátis</em> ou retire na loja.' },
+  { id: 'whatsapp', icon: 'whats',  title: 'Atendimento humano, direto no <em>WhatsApp</em>.' },
+  { id: 'parcel',   icon: 'card',   title: 'Até <em>18x sem juros</em> em iPhones lacrados. PIX com 5% off.' },
+  { id: 'frete',    icon: 'box',    title: '<em>Frete grátis</em> ou retire na loja.' },
 ]
+
+/* ── SUPER PROMOÇÃO — featured offer ── */
+export type SuperPromo = {
+  flag: string
+  titleAccent: string
+  titleRest: string
+  desc: string
+  price: string
+  installments: string
+  bonus: string
+  ctaPrimary: string
+  ctaSecondary: string
+  img: string
+  bg: string
+}
+
+export const superPromo: SuperPromo = {
+  flag: 'OFERTA RELÂMPAGO · ATÉ DOMINGO',
+  titleAccent: 'iPhone 16',
+  titleRest: 'em 18x sem juros.',
+  desc: 'Sem entrada. Lacrado, com nota fiscal e garantia Apple. Estoque limitado.',
+  price: 'R$ 7.499',
+  installments: '18x R$ 417',
+  bonus: '+ AirPods Pro 2 com 30% off na compra junta.',
+  ctaPrimary: 'Quero meu iPhone',
+  ctaSecondary: 'Ver detalhes',
+  img: '/assets/products/iphone-16-purple.jpg',
+  bg: 'linear-gradient(135deg, #fff5e6 0%, #ffe6e8 30%, #f0e0ff 65%, #e0f0ff 100%)',
+}
 
 export const quickLinks = [
   'Como funciona o trade-in',

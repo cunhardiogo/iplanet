@@ -9,6 +9,7 @@ import QuickLinks from '@/components/QuickLinks'
 import StoreCard from '@/components/StoreCard'
 import Footer from '@/components/Footer'
 import WhatsGlyph from '@/components/WhatsGlyph'
+import SuperPromo from '@/components/SuperPromo'
 import {
   stores, categories, novidades, seminovos, acessorios, features, quickLinks,
   WHATSAPP_NUMBER, WHATSAPP_DISPLAY,
@@ -87,6 +88,9 @@ export default function HomePage() {
         </div>
       </header>
 
+      {/* ── SUPER PROMOÇÃO ── */}
+      <SuperPromo />
+
       {/* ── ZERO NA CAIXA ── */}
       <section id="novidades" className="ip-section">
         <div className="ip-container">
@@ -102,7 +106,7 @@ export default function HomePage() {
       </section>
 
       {/* ── SEMINOVOS ── */}
-      <section className="ip-section ip-section-seminovo">
+      <section id="seminovos" className="ip-section ip-section-seminovo">
         <div className="ip-container">
           <SectionTitle headline="Seminovos iPlanet" subhead="Revisados, com 1 ano de garantia. Por menos." />
           <div className="ip-rail">
@@ -116,7 +120,7 @@ export default function HomePage() {
       </section>
 
       {/* ── TRADE-IN ── */}
-      <section className="ip-section">
+      <section id="troca" className="ip-section">
         <div className="ip-container">
           <div className="ip-troca">
             <div>
@@ -142,7 +146,7 @@ export default function HomePage() {
       </section>
 
       {/* ── ACESSÓRIOS ── */}
-      <section className="ip-section">
+      <section id="acessorios" className="ip-section ip-section-accessories">
         <div className="ip-container">
           <SectionTitle headline="Acessórios" subhead="Pra completar seu setup." />
           <div className="ip-rail ip-rail-3up">

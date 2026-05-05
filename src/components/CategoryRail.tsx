@@ -228,7 +228,7 @@ export default function CategoryRail({ categories }: { categories: Category[] })
   return (
     <div className="ip-cat-rail">
       {categories.map(c => (
-        <a key={c.id} className="ip-cat-item" href="#">
+        <a key={c.id} className="ip-cat-item" href={c.href} data-cat={c.id}>
           <div className="ip-cat-glyph"><CategoryGlyph shape={c.shape} /></div>
           <div className="ip-cat-label">{c.label}</div>
         </a>

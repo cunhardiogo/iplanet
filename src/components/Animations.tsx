@@ -79,6 +79,19 @@ export default function Animations() {
         ease: 'power1.inOut', yoyo: true, repeat: -1, repeatDelay: 4,
       })
 
+      // ── SUPER PROMO — entrada dramática ───────────────────────────────
+      const promoEl = document.querySelector<HTMLElement>('.ip-promo')
+      if (promoEl) {
+        gsap.from(promoEl, {
+          scrollTrigger: { trigger: promoEl, start: 'top 80%', once: true },
+          scale: 0.94, autoAlpha: 0, y: 40, duration: 0.85, ease: 'power3.out',
+        })
+        gsap.from(promoEl.querySelectorAll<HTMLElement>('.ip-promo-text > *'), {
+          scrollTrigger: { trigger: promoEl, start: 'top 75%', once: true },
+          y: 24, autoAlpha: 0, duration: 0.55, ease: 'power2.out', stagger: 0.08,
+        })
+      }
+
       // ── SECTION TITLES ────────────────────────────────────────────────
       gsap.utils.toArray<Element>('.ip-section-head').forEach(el => {
         gsap.from(el, {
